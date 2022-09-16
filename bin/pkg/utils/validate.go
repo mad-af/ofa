@@ -25,9 +25,9 @@ func BindValidate(c echo.Context, i interface{}) error {
 		return response.ReplyError(err.(*echo.HTTPError).Internal.Error(), http.StatusBadRequest)
 	}
 	if err := c.Validate(i); err != nil {
-		return response.ReplyError(err.(*validator.ValidationErrors).Error(), http.StatusBadRequest)
+		return response.ReplyError(err.(validator.ValidationErrors)[0].Error(), http.StatusBadRequest)
 	}
-
+	
 	return nil
 }
 
