@@ -12,6 +12,5 @@ type (
 
 	Interface interface {
 		GetList(*models.ReqGetList) (*res.SendData, error)
-		// COba()
 	}
 )
