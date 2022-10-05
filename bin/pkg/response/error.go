@@ -15,7 +15,11 @@ type HTTPError struct {
 func NewHTTPErrorHandler(err error, c echo.Context) {
 	report, ok := err.(*HTTPError)
 	if !ok {
-		report = ReplyError(err.Error(), http.StatusInternalServerError)
+		if temp, ok := err.(*echo.HTTPError); ok {
+			report = ReplyError(temp.Message.(string), temp.Code)
+		} else {
+			report = ReplyError(err.Error(), http.StatusInternalServerError)
+		}
 	}
 
 	c.Logger().Error(report)

@@ -22,10 +22,10 @@ func (v *ValidationUtil) Validate(i interface{}) error {
 
 func BindValidate(c echo.Context, i interface{}) error {
 	if err := c.Bind(i); err != nil {
-		return response.ReplyError(err.(*echo.HTTPError).Internal.Error(), http.StatusBadRequest)
+		return err
 	}
 	if err := c.Validate(i); err != nil {
-		return response.ReplyError(err.(validator.ValidationErrors)[0].Error(), http.StatusBadRequest)
+		return response.ReplyError(err.(validator.ValidationErrors).Error(), http.StatusBadRequest)
 	}
 	
 	return nil
