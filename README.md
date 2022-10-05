@@ -16,3 +16,9 @@ All API Here
 ````
  nodemon --exec go run ./bin/app/main.go ./bin/app/server.go
 ````
+
+
+## Some module Error?
+````
+  go mod tidy
+````
