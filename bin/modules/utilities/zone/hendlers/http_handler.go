@@ -26,5 +26,5 @@ func GetList(c echo.Context) error {
 
 	var data, err = u.GetList(req); 
 	if err != nil { return err } 
-	return res.Reply(data, c)
+	return res.Reply(&data, c)
 }
