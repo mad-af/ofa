@@ -5,13 +5,20 @@ import (
 
 	"ofa/bin/middleware"
 	"ofa/bin/modules/utilities/zone/models"
+	"ofa/bin/modules/utilities/zone/repositories"
 	"ofa/bin/modules/utilities/zone/usecases"
 	res "ofa/bin/pkg/response"
 	"ofa/bin/pkg/utils"
+	db "ofa/bin/repositories"
 )
 
-var u usecases.Interface = &usecases.Context{
+var gorm repositories.GormInterface = &repositories.Options{
+	DB: db.InitPostgre(),
+}
+
+var u usecases.Interface = &usecases.Options{
 	Hallo: "hahah",
+	Gorm: gorm,
 }
 
 func Init(g *echo.Group) {
