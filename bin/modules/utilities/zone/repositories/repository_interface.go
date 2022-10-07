@@ -8,6 +8,6 @@ type (
 	}
 
 	GormInterface interface {
-		FindOne() interface{}
+		FindManyCommon(zone int, id string) interface{}
 	}
 )
