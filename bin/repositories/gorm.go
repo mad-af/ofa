@@ -10,9 +10,9 @@ import (
 
 func InitPostgre() *gorm.DB {
 	var connection = fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=%s",
-		"localhost",
+		"127.0.0.1",
 		"postgres",
-		"123",
+		"postgres",
 		"coba",
 		"5432",
 		"disable",
