@@ -21,6 +21,9 @@ func (s *Server) Routes() {
 	e.GET("/sum/:n1/:n2", func(c echo.Context) error {
 		return c.String(http.StatusOK, repositories.Summation(c))
 	})
+	e.GET("/subtract/:n1/:n2", func(c echo.Context) error {
+		return c.String(http.StatusOK, repositories.Subtraction(c))
+	})
 
 	grupUtilities := e.Group("/utilities")
 	zone.Init(grupUtilities)
