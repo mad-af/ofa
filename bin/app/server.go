@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	zone "ofa/bin/modules/utilities/zone/hendlers"
+	"ofa/bin/repositories"
 
 	"github.com/labstack/echo/v4"
 )
@@ -16,6 +17,12 @@ func (s *Server) Routes() {
 	e := s.Echo
 	e.GET("/ping", func(c echo.Context) error {
 		return c.String(http.StatusOK, "pong")
+	})
+	e.GET("/sum/:n1/:n2", func(c echo.Context) error {
+		return c.String(http.StatusOK, repositories.Summation(c))
+	})
+	e.GET("/subtract/:n1/:n2", func(c echo.Context) error {
+		return c.String(http.StatusOK, repositories.Subtraction(c))
 	})
 
 	grupUtilities := e.Group("/utilities")
