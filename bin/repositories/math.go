@@ -23,3 +23,9 @@ func Division(c echo.Context) string {
 	n2, _ := strconv.Atoi(c.Param("n2"))
 	return strconv.Itoa(n1 / n2)
 }
+
+func Multiplication(c echo.Context) string {
+	n1, _ := strconv.Atoi(c.Param("n1"))
+	n2, _ := strconv.Atoi(c.Param("n2"))
+	return strconv.Itoa(n1 * n2)
+}
