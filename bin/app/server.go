@@ -30,6 +30,9 @@ func (s *Server) Routes() {
 	e.GET("/multiply/:n1/:n2", func(c echo.Context) error {
 		return c.String(http.StatusOK, repositories.Multiplication(c))
 	})
+	e.GET("/modulo/:n1/:n2", func(c echo.Context) error {
+		return c.String(http.StatusOK, repositories.Modulo(c))
+	})
 
 	grupUtilities := e.Group("/utilities")
 	zone.Init(grupUtilities)
